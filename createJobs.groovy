@@ -1,8 +1,14 @@
-pipelineJob('pipelineJob') {
+pipelineJob('jenkins-demo-sample-job') {
     definition {
-        cps {
-            script(readFileFromWorkspace('pipelineJob.groovy'))
-            sandbox()
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url 'https://github.com/abhishekr7/demo.git'
+                    }
+                    branch 'master'
+                }
+            }
         }
     }
 }
